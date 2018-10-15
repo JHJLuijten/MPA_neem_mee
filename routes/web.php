@@ -10,8 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('passports','PassportController');
 
 Route::get('/', function () {
-    return view('create');
+    return view('welcome');
 });

@@ -14,14 +14,14 @@
                         </div>
                     @endif
                     @if(auth::user()) 
-                        You are logged in!  
+                        You are logged in!  <br>
                     @endauth
-
-                    @foreach ($objects as $item)
-                    {{$item->name}}
-                    @endforeach
-                    <a href="/categories">Categories</a>
-                   
+                        @foreach ($items as $item)
+                            {{$item->name}}
+                        @endforeach
+                        
+                        <br><a href="/categories">Categories</a>
+                    
                 </div>
             </div>
         </div>

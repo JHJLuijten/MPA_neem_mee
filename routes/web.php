@@ -22,6 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home', 'objectController@objects');
-Route::get('/categories', 'categoryController@categories');
+
+Route::get('/home', 'ItemController@items');
+Route::get('/categories', 'CategoryController@categories');

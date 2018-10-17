@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\categories;
+use App\Category;
 
-class categoryController extends Controller
+class CategoryController extends Controller
 {
     function categories(){
-        $categories=categories::get();
+        $categories=category::get();
         return view('/categories',['categories'=>$categories]);
     }
 }

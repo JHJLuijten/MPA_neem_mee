@@ -16,7 +16,7 @@
                     
 
                     @foreach ($categories as $category)
-                    {{$category->name}}
+                        {{$category->name}}
                     @endforeach
                     
                 </div>

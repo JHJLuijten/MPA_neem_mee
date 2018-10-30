@@ -13,12 +13,15 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    
-
-                    @foreach ($categories as $category)
-                    <a href="/show/{{$category->id}}">{{$category->name}}</a>
-                       
-                    @endforeach
+                    @if(auth::user()) 
+                        You are logged in!  <br>
+                    @endauth
+                        @foreach ($items as $item)
+                            {{$item->name}}
+                        @endforeach
+                        
+                        <br><a href="/categories">Categories</a>
+                        <br><a href="/show">Index items</a>
                     
                 </div>
             </div>

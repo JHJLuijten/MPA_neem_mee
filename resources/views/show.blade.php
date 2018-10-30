@@ -13,11 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    
-
-                    @foreach ($categories as $category)
-                    <a href="/show/{{$category->id}}">{{$category->name}}</a>
-                       
+                    @foreach ($items as $item)
+                    {{$item->name}}
+                    {{$item->weightInGrams}}
                     @endforeach
                     
                 </div>

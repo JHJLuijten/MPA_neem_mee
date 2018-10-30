@@ -16,11 +16,10 @@
                     @if(auth::user()) 
                         You are logged in!  <br>
                     @endauth
-                        @foreach ($items as $item)
-                            {{$item->name}}
-                        @endforeach
+                     
                         
                         <br><a href="/categories">Categories</a>
+                        <br><a href="/show">Index items</a>
                     
                 </div>
             </div>

@@ -7,8 +7,9 @@ use App\Item;
 
 class ItemController extends Controller
 {
-    function items(){
+    function index(){
         $items=item::get();
-        return view('/home',['items'=>$items]);
+        
+        return view('/view1',['items'=>$items]);
     }
 }

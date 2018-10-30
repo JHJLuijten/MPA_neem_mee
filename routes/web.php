@@ -25,3 +25,5 @@ Auth::routes();
 
 Route::get('/home', 'ItemController@items');
 Route::get('/categories', 'CategoryController@categories');
+Route::get('/show/{id}', 'CategoryController@show');
+Route::get('/show', 'ItemController@index');

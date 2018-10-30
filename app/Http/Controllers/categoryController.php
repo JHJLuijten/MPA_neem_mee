@@ -8,7 +8,7 @@ use App\Category;
 class CategoryController extends Controller
 {
     function categories(){
-        $categories=category::get();
+        $categories=category::all();
         return view('/categories',['categories'=>$categories]);
     }
 }

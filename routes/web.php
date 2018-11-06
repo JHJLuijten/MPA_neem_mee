@@ -28,3 +28,7 @@ Route::get('/categories', 'CategoryController@categories');
 Route::get('/item/{id}', 'CategoryController@item');
 Route::get('/item', 'ItemController@index');
 Route::get('/show/{id}', 'ItemController@show');
+Route::get('/item/add/{id}', [
+    'uses'=>'ItemController@addItem',
+    'as'=>'item.add'
+    ]);

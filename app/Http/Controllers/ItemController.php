@@ -9,7 +9,12 @@ class ItemController extends Controller
 {
     function index(){
         $items=item::get();
-        
-        return view('/view1',['items'=>$items]);
+        return view('/item',['items'=>$items]);
+    }
+
+    function show($id){
+        $item = item::find($id);
+
+        return view('/show',['item'=>$item]);
     }
 }

@@ -8,15 +8,15 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    @foreach ($items as $item)
-                    {{$item->name}}
-                    {{$item->weightInGrams}}
-                    @endforeach
+    
+                    {{-- {{dd($item)}} --}}
+                        <h3>{{$item->id}}</h3>
+                        <h3>{{$item->name}}</h3>
+                        <h3>Gewicht in gram:{{$item->weightInGrams}}</h3>
+                        <br>
+                    
+                        <br><a href="/categories">Categories</a>
+                        <br><a href="/index">Index items</a>
                     
                 </div>
             </div>

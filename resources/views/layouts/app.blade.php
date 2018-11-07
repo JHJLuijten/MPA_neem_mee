@@ -35,7 +35,7 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
+                        <a href="/items/suitcase">suitcase</a>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -60,7 +60,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
+                                    
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>

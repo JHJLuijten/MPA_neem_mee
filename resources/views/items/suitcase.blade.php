@@ -10,9 +10,10 @@
                 <div class="card-body">
     
                     @foreach ($items as $item)
-                        {{$item['qty']}}
-                        {{$item['weight']}}
-                        {{$item['item']}}
+                        
+                        <h2>Naam: {{$item['item']}}</h2><br>
+                        <h2>Gewicht in gram: {{$item['weight']}}</h2><br>
+                        <h2>Aantal: {{$item['qty']}}</h2><br>
 
                     @endforeach
                     

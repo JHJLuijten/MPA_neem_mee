@@ -16,15 +16,13 @@
                         <h2>Aantal: {{$item['qty']}}</h2><br>
 
                     @endforeach
-                    <?php
                     
-                        // potential if else for checking the weight
-                        if ($weightInGrams >= 0 && $weightInGrams < 20000) {
-                            echo 'between 0 et 20000 weightInGrams';
-                        } else {
-                            echo 'to heavy for your suitcase/backpack';
-                        }
-                    ?>
+                    <h2>{{$weight}}</h2>
+                    @if ($weight >= 0 && $weight < 20000)
+                        <h2 style="color:green">between 0 et 20000 weightInGrams</h2>
+                    @else 
+                        <h2 style="color:red">to heavy for your suitcase/backpack</h2>
+                    @endif
                                     
                 </div>
             </div>

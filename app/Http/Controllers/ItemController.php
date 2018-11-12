@@ -45,7 +45,9 @@ class ItemController extends Controller
 
     /**
      * Gets items that are in the suitcase
+     * 
      */
+
 
     public function getSuitcase(){
         $suitcase = new suitcase;

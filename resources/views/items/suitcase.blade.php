@@ -14,7 +14,8 @@
                             <h2>Naam: {{$item['item']}}</h2><br>
                             <h2>Gewicht in gram: {{$item['weight']}}</h2><br>
                             <h2>Aantal: {{$item['qty']}}</h2><br>
-                <li><a href="{{route('suitcase.remove', ['id' => $item['id']['item']])}}">
+                            {{-- <a href="{{route('suitcase.remove', ['id' =>$item['id']])}}">remove</a> --}}
+                            
                         @endforeach
                     
                     @else ()

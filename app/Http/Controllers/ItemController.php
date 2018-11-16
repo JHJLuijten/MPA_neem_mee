@@ -55,6 +55,10 @@ class ItemController extends Controller
         return view('/items/suitcase', ['items' => $getSuitcase->items, 'weight' => $getSuitcase->weightInGrams, 'quantity' => $getSuitcase->quantity]);
     }
 
+    /**
+     * Removes item 
+     */
+
     public function removeItem($id){
         $test = new Suitcase;
         $test->removeItemFromSession($id);

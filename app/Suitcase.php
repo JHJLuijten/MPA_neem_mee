@@ -8,6 +8,10 @@ class Suitcase{
     public $weightInGrams;
     public $quantity;
 
+    /**
+     * gets items and puts them in the public var
+     */
+
     public function __construct($usedSuitcase = []){
         if ($usedSuitcase){
             $this->items = $usedSuitcase->items;
@@ -15,6 +19,10 @@ class Suitcase{
             $this->quantity = $usedSuitcase->quantity;
         }
     }
+
+    /**
+     * adds item to suitcase
+     */
 
     public function add($id,$item){
         $itemAdd = ['qty' => 0, 'weight'=> $item->weightInGrams, 'item' => $item->name];
@@ -30,11 +38,19 @@ class Suitcase{
         $this->weightInGrams += $item->weightInGrams;
     }
 
+    /**
+     * minus 1 or more item
+     */
+
     public function minus($id){
         $this->qauntity -= $this->items[$id]['qty'];
         $this->weightInGrams -= $this->items[$id]['weight'];
         unset($this->items[$id]);
     }
+
+    /**
+     * removes item from sesion
+     */
     
     public function removeItemFromSession($id){
         $usedSuitcase = Session::get('suitcase');
@@ -47,6 +63,10 @@ class Suitcase{
             Session::forget('suitcase');
         }
     }
+
+    /**
+     * get suitcase and shows items
+     */
 
     public function getSuitcase(){
         if (!Session::get('suitcase')){

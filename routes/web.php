@@ -23,9 +23,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 
-Route::get('/home', 'ItemController@items');
+Route::get('/remove/{id}', [
+    'uses' => 'ItemController@removeItem',
+    'as' => 'suitcase.remove'
+]);
 Route::get('/categories', 'CategoryController@categories');
-Route::get('/item/{id}', 'CategoryController@item');
+Route::get('/item/{id}', 'CategoryController@show');
 Route::get('/item', 'ItemController@index');
 Route::get('/show/{id}', 'ItemController@show');
 Route::get('/item/add/{id}', [

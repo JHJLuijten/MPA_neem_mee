@@ -11,7 +11,6 @@ class CategoryController extends Controller
     /**
      * shows all categories
      */
-
     function categories(){
         $categories=category::all();
         
@@ -20,11 +19,14 @@ class CategoryController extends Controller
 
     /**
      * show an category with the items that are in it
+     * $item=Category::find($id)->items()->get(); in deze regel word het er ingezet
+     * return view('/show',['item'=>$item]); en hier leid die hem naar de show 
      */
     function show($id){
-        $items=Category::find($id)->items()->get();
+        $item=Category::find($id);
+        $test = $item->items()->get();
         
-        return view('/show',['items'=>$items]);
+        return view('/show',['item'=>$item]);
     }
     
 }

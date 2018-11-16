@@ -10,12 +10,14 @@
                 <div class="card-body">
     
                     {{-- {{dd($item)}} --}}
-                        <h3>{{$item->id}}</h3>
-                        <h3>{{$item->name}}</h3>
+                    
+                        <h3>{{$item['id']}}</h3>
+                        <h3>{{$item['name']}}</h3>
                         <h3>Gewicht in gram:{{$item->weightInGrams}}</h3>
                         <br>
-                            <a href="{{route('item.add',['id'=> $item->id]) }}">Add to suitcase</a>
-                        {{-- {{$test}} --}}
+
+                            <a href="{{route('item.add',['id'=> $item['id']]) }}">Add to suitcase</a>
+                        
                         <br><a href="/categories">Categories</a>
                         <br><a href="/index">Index items</a>
                     

@@ -11,11 +11,11 @@
     
                     @if ($items != 0 )
                         @foreach ($items as $item)
-                            <h2>Naam: {{$item['item']}}</h2><br>
+                            <h2>Naam: {{$item['item']['name']}}</h2><br>
                             <h2>Gewicht in gram: {{$item['weight']}}</h2><br>
                             <h2>Aantal: {{$item['qty']}}</h2><br>
-                            {{-- <a href="{{route('suitcase.remove', ['id' =>$item['id']])}}">remove</a> --}}
-                            
+                            <a href="{{route('suitcase.remove', ['id' =>$item['item']['id']])}}">remove</a>
+                            {{-- {{dd($item)}} --}}
                         @endforeach
                     
                     @else ()
@@ -29,7 +29,8 @@
                     @else 
                         <h2 style="color:red">to heavy for your suitcase/backpack</h2>
                     @endif
-                                    
+                    
+                    {{-- <a href="{{route('suitcase.upgradeBag')}}">Upgrade size</a> --}}
                 </div>
             </div>
         </div>

@@ -50,7 +50,7 @@ class ItemController extends Controller
     public function getSuitcase(){
         $suitcase = new suitcase;
         $getSuitcase = $suitcase->getSuitcase();
-        return view('/items/suitcase', ['items' => $getSuitcase->items, 'weight' => $getSuitcase->weightInGrams, 'quantity' => $getSuitcase->quantity, 'maxWeight' => $suitcase->smaxWeight]);
+        return view('/items/suitcase', ['items' => $getSuitcase->items, 'weight' => $getSuitcase->weightInGrams, 'quantity' => $getSuitcase->quantity, 'maxWeight' => $suitcase->maxWeight]);
     }
 
     /**
@@ -60,5 +60,8 @@ class ItemController extends Controller
     public function removeItem($id){
         $test = new Suitcase;
         $test->removeItemFromSession($id);
+        return redirect('/items/suitcase'); 
     }
+
+
 }

@@ -19,6 +19,7 @@ class Suitcase{
             $this->items = $usedSuitcase->items;
             $this->weightInGrams = $usedSuitcase->weightInGrams;
             $this->quantity = $usedSuitcase->quantity;
+            
         }
     }
 
@@ -27,7 +28,7 @@ class Suitcase{
      */
 
     public function add($id,$item){
-        $itemAdd = ['qty' => 0, 'weight'=> $item->weightInGrams, 'item' => $item->name];
+        $itemAdd = ['qty' => 0, 'weight'=> $item->weightInGrams, 'item' => $item];
         if($this->items){
             if(array_key_exists($id, $this->items)){
                 $itemAdd = $this->items[$id];
@@ -45,7 +46,7 @@ class Suitcase{
      */
 
     public function minus($id){
-        $this->qauntity -= $this->items[$id]['qty'];
+        $this->quantity -= $this->items[$id]['qty'];
         $this->weightInGrams -= $this->items[$id]['weight'];
         unset($this->items[$id]);
     }

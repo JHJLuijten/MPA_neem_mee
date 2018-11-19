@@ -19,7 +19,7 @@
                             <a href="{{route('item.add',['id'=> $item['id']]) }}">Add to suitcase</a>
                         
                         <br><a href="/categories">Categories</a>
-                        <br><a href="/index">Index items</a>
+                        <br><a href="/item">Index items</a>
                     
                 </div>
             </div>

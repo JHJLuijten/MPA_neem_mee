@@ -35,7 +35,9 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-                        <a href="/items/suitcase">suitcase</a>
+                    <a style="margin:2px;" href="/categories">categories </a>
+                    <a style="margin:2px;" href="/item">index </a>
+                    <a style="margin:2px;" href="/items/suitcase">suitcase</a>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->

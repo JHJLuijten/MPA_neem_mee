@@ -14,7 +14,7 @@
                         </div>
                     @endif
                     @foreach ($items as $item)
-                    {{-- {{$item->name}} --}}
+                    
                   
                     
                     <h3><a href="/show/{{$item->id}}">{{$item->name}}</a></h3>

@@ -23,13 +23,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 
+
+Route::get('/categories', 'CategoryController@categories');
+Route::get('/item/{id}', 'CategoryController@show');
+/**item index, a specific item, item add, item remove, get the suitcase now(so the items update) */    
+Route::get('/item', 'ItemController@index');
+Route::get('/minus/{id}', [
+    'uses' => 'ItemController@minus',
+    'as' => 'suitcase.minus'
+]);
+
 Route::get('/remove/{id}', [
     'uses' => 'ItemController@removeItem',
     'as' => 'suitcase.remove'
 ]);
-Route::get('/categories', 'CategoryController@categories');
-Route::get('/item/{id}', 'CategoryController@show');
-Route::get('/item', 'ItemController@index');
 Route::get('/show/{id}', 'ItemController@show');
 Route::get('/item/add/{id}', [
     'uses'=>'ItemController@addItem',

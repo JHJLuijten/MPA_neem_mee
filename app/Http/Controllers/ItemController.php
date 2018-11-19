@@ -62,6 +62,14 @@ class ItemController extends Controller
         $test->removeItemFromSession($id);
         return redirect('/items/suitcase'); 
     }
-
+    
+    /**
+     * function to delete one or more from an item qty 
+     */
+    public function minus($id){
+        $minus = new Suitcase;
+        $minus->minus($id);
+        return redirect('/items/suitcase');
+    }
 
 }

@@ -45,14 +45,12 @@ class ItemController extends Controller
 
     /**
      * Gets items that are in the suitcase
-     * 
      */
-
 
     public function getSuitcase(){
         $suitcase = new suitcase;
         $getSuitcase = $suitcase->getSuitcase();
-        return view('/items/suitcase', ['items' => $getSuitcase->items, 'weight' => $getSuitcase->weightInGrams, 'quantity' => $getSuitcase->quantity]);
+        return view('/items/suitcase', ['items' => $getSuitcase->items, 'weight' => $getSuitcase->weightInGrams, 'quantity' => $getSuitcase->quantity, 'maxWeight' => $suitcase->smaxWeight]);
     }
 
     /**

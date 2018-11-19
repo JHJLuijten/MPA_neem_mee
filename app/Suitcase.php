@@ -7,6 +7,8 @@ class Suitcase{
     public $items;
     public $weightInGrams;
     public $quantity;
+    public $maxWeight = 20000;
+    
 
     /**
      * gets items and puts them in the public var

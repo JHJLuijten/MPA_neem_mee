@@ -24,7 +24,7 @@
                     
                     
                     <h2>{{$weight}}</h2>
-                    @if ($weight >= 0 && $weight < 20000)
+                    @if ($weight >= 0 && $weight < $maxWeight)
                         <h2 style="color:green">between 0 an 20000 weight in grams</h2>
                     @else 
                         <h2 style="color:red">to heavy for your suitcase/backpack</h2>

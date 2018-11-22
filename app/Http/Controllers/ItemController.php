@@ -66,7 +66,7 @@ class ItemController extends Controller
     /**
      * function to delete one or more from an item qty 
      */
-    public function minus($id){
+    public function minusItem($id){
         $minus = new Suitcase;
         $minus->minus($id);
         return redirect('/items/suitcase');

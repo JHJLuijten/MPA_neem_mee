@@ -41,11 +41,34 @@ class Suitcase{
         $this->weightInGrams += $item->weightInGrams;
     }
 
-    /**
-     * minus 1 or more item
-     */
-
     public function minus($id){
+        $this->items[$id]['qty']--;
+        $this->items[$id]['weight'] -= $this->items[$id]['item']['weight']; 
+        $this->quantity--;
+        $this->weightInGrams -= $this->items[$id]['weight'];    
+        if($items[$id]['qty'] == 0 ){
+            unset($this->items[$id]);
+        }
+    }
+ 
+    public function minusItem($id){
+        $usedSuitcase = Session::get('suitcase');
+        $suitcase = new suitcase($usedSuitcase);
+        $suitcase->minusItem($id);
+        if(count($suitcase->items) > 0){
+            Session::put('suitcase',$suitcase);
+        }else{
+            Session::forget('suitcase');
+        }
+        
+    }
+
+
+
+    /**
+     * removes item
+     */
+    public function removeItem($id){
         $this->quantity -= $this->items[$id]['qty'];
         $this->weightInGrams -= $this->items[$id]['weight'];
         unset($this->items[$id]);
@@ -58,7 +81,7 @@ class Suitcase{
     public function removeItemFromSession($id){
         $usedSuitcase = Session::get('suitcase');
         $suitcase = new suitcase($usedSuitcase);
-        $suitcase->minus($id);
+        $suitcase->removeItem($id);
         if(count($suitcase->items) > 0){
             Session::put('suitcase',$suitcase);
             

@@ -14,7 +14,8 @@
                             <h2>Naam: {{$item['item']['name']}}</h2><br>
                             <h2>Gewicht in gram: {{$item['weight']}}</h2><br>
                             <h2>Aantal: {{$item['qty']}}</h2><br>
-                            {{-- <a href="{{route('suitcase.minus', ['id' =>$item['item']['id']])}}">minus 1</a><br> --}}
+                            
+                            <a href="{{route('suitcase.minusItem', ['id' =>$item['item']['id']])}}">minus 1</a><br>
                             <a href="{{route('suitcase.remove', ['id' =>$item['item']['id']])}}">remove</a>
                             
                             {{-- {{dd($item)}} --}}

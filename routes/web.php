@@ -28,9 +28,9 @@ Route::get('/categories', 'CategoryController@categories');
 Route::get('/item/{id}', 'CategoryController@show');
 /**item index, a specific item, item add, item remove, get the suitcase now(so the items update) */    
 Route::get('/item', 'ItemController@index');
-Route::get('/minus/{id}', [
-    'uses' => 'ItemController@minus',
-    'as' => 'suitcase.minus'
+Route::get('/minusItem/{id}', [
+    'uses' => 'ItemController@minusItem',
+    'as' => 'suitcase.minusItem'
 ]);
 
 Route::get('/remove/{id}', [

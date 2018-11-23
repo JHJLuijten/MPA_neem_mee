@@ -102,4 +102,17 @@ class Suitcase{
         $suitcase = new Suitcase($usedSuitcase);
         return $suitcase;
     }
+
+    public function increaseWeight(){
+        if($this->maxWeight <= 20000 ){
+            $this->maxWeight + 5000 ;
+        }  
+    }
+
+    public function decreaseWeight(){
+        if($this->maxWeight >= 20000 ){
+            $this->maxWeight - 5000 ;
+        }
+    }
+
 }

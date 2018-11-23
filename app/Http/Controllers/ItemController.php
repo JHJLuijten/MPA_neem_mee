@@ -72,4 +72,10 @@ class ItemController extends Controller
         return redirect('/items/suitcase');
     }
 
+    public function increaseWeight(){
+        $test = new Suitcase;
+        $test->increaseWeight($id);
+        return view('/items/suitcase');
+    }
+
 }

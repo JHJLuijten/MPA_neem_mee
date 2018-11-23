@@ -26,7 +26,10 @@
                     @endif
                     
                     
+                    <a href="{{route('suitcase.increaseWeight')}}">Bigger backpack</a></br>
+
                     <h2>{{$weight}}</h2>
+                    
                     @if ($weight >= 0 && $weight < $maxWeight)
                         <h2 style="color:green">between 0 an 20000 weight in grams</h2>
                     @else 

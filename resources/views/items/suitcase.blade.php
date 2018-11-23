@@ -26,7 +26,7 @@
                     @endif
                     
                     
-                    <a href="{{route('suitcase.increaseWeight')}}">Bigger backpack</a></br>
+                    {{-- <a href="{{route('suitcase.increaseWeight')}}">Bigger backpack</a><br> --}}
 
                     <h2>{{$weight}}</h2>
                     

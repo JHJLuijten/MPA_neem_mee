@@ -68,7 +68,7 @@ class ItemController extends Controller
      */
     public function minusItem($id){
         $minus = new Suitcase;
-        $minus->minus($id);
+        $minus->minusItem($id);
         return redirect('/items/suitcase');
     }
 

@@ -41,10 +41,8 @@ class Suitcase{
     }
 
     public function minus($id){
-        // dd($this->items[$id]['qty']);
-
         $this->items[$id]['qty']--;
-        $this->items[$id]['weight'] -= $this->items[$id]['item']['weight']; 
+        $this->items[$id]['weight'] -= $this->items[$id]['item']['weightInGrams']; 
         $this->quantity--;
         $this->weightInGrams -= $this->items[$id]['weight'];    
         if($this->items[$id]['qty'] <= 0 ){
@@ -64,13 +62,11 @@ class Suitcase{
         
     }
 
-
-
     /**
      * removes item
      */
     public function removeItem($id){
-    dd($this->items);
+
 
         $this->quantity -= $this->items[$id]['qty'];
         $this->weightInGrams -= $this->items[$id]['weight'];

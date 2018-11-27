@@ -33,7 +33,10 @@ Route::get('/minusItem/{id}', [
     'as' => 'suitcase.minusItem'
 ]);
 
-Route::get('/increaseWeight', 'ItemController@increaseWeight');
+Route::get('/increaseWeight',[
+    'uses' => 'ItemController@increaseWeight',
+    'as' => 'suitcase.increaseWeight'
+]);
 Route::get('/remove/{id}', [
     'uses' => 'ItemController@removeItem',
     'as' => 'suitcase.remove'

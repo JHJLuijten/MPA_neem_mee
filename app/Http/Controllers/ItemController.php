@@ -74,7 +74,7 @@ class ItemController extends Controller
 
     public function increaseWeight(){
         $test = new Suitcase;
-        $test->increaseWeight($id);
+        $test->increaseWeight();
         return view('/items/suitcase');
     }
 

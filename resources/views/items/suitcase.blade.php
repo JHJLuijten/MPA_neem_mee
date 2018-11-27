@@ -25,8 +25,8 @@
                         <h2>weight = 0</h2>
                     @endif
                     
-                    
-                    {{-- <a href="{{route('suitcase.increaseWeight')}}">Bigger backpack</a><br> --}}
+                    <br><br>
+                    <a href="{{route('suitcase.increaseWeight')}}">Bigger backpack</a><br>
 
                     <h2>{{$weight}}</h2>
                     
@@ -36,7 +36,7 @@
                         <h2 style="color:red">to heavy for your suitcase/backpack</h2>
                     @endif
                     
-                    {{-- <a href="{{route('suitcase.upgradeBag')}}">Upgrade size</a> --}}
+                    
                 </div>
             </div>
         </div>

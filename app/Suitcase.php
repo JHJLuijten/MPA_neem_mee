@@ -13,12 +13,13 @@ class Suitcase{
      * gets items and puts them in the public var
      */
 
-    public function __construct($usedSuitcase = []){
-        if ($usedSuitcase){
+    public function __construct(){
+        $usedSuitcase = Session::get('suitcase');
+
+        if ($usedSuitcase) {
             $this->items = $usedSuitcase->items;
             $this->weightInGrams = $usedSuitcase->weightInGrams;
             $this->quantity = $usedSuitcase->quantity;
-            
         }
     }
 
@@ -89,18 +90,7 @@ class Suitcase{
         }
     }
 
-    /**
-     * get suitcase and shows items
-     */
 
-    public function getSuitcase(){
-        if (!Session::get('suitcase')){
-            return view ('items/suitcase');
-        };
-        $usedSuitcase = Session::get('suitcase');
-        $suitcase = new Suitcase($usedSuitcase);
-        return $suitcase;
-    }
 
     public function increaseWeight(){
         if($this->maxWeight <= 20000 ){

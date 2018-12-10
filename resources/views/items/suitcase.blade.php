@@ -8,7 +8,6 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-    
                     @if ($items != 0 )
                         @foreach ($items as $item)
                             <h2>Naam: {{$item['item']['name']}}</h2><br>

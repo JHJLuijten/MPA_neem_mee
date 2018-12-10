@@ -48,9 +48,8 @@ class ItemController extends Controller
      */
 
     public function getSuitcase(){
-        $suitcase = new suitcase;
-        $getSuitcase = $suitcase->getSuitcase();
-        return view('/items/suitcase', ['items' => $getSuitcase->items, 'weight' => $getSuitcase->weightInGrams, 'quantity' => $getSuitcase->quantity, 'maxWeight' => $suitcase->maxWeight]);
+        $suitcase = new Suitcase();
+        return view('/items/suitcase', ['items' => $suitcase->items, 'weight' => $suitcase->weightInGrams, 'quantity' => $suitcase->quantity, 'maxWeight' => $suitcase->maxWeight]);
     }
 
     /**
@@ -73,9 +72,10 @@ class ItemController extends Controller
     }
 
     public function increaseWeight(){
-        $test = new Suitcase;
-        $test->increaseWeight();
-        return view('/items/suitcase');
+        $suitcase = new Suitcase;
+        $getSuitcase = $suitcase->getSuitcase();
+        $suitcase->increaseWeight();
+        return view('/items/suitcase', ['items' => $getSuitcase->items]);
     }
 
 }

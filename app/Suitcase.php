@@ -4,6 +4,7 @@ namespace App;
 use Session;
 
 class Suitcase{
+    public $name;
     public $items;
     public $weightInGrams;
     public $quantity;
@@ -15,8 +16,9 @@ class Suitcase{
 
     public function __construct(){
         $usedSuitcase = Session::get('suitcase');
-
+        
         if ($usedSuitcase) {
+            $this->name = $usedSuitcase->name;
             $this->items = $usedSuitcase->items;
             $this->weightInGrams = $usedSuitcase->weightInGrams;
             $this->quantity = $usedSuitcase->quantity;
@@ -90,8 +92,6 @@ class Suitcase{
         }
     }
 
-
-
     public function increaseWeight(){
         if($this->maxWeight <= 20000 ){
             $this->maxWeight + 5000 ;
@@ -104,4 +104,9 @@ class Suitcase{
         }
     }
 
+    public function giveName(){
+        $usedSuitcase = Session::get('suitcase');
+        $suitcase = new suitcase($usedSuitcase);
+        $this->name = $suitcase->name;
+    }
 }

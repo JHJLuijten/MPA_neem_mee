@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 
-
+Route::post('/giveName', 'ItemController@giveName');
 Route::get('/categories', 'CategoryController@categories');
 Route::get('/item/{id}', 'CategoryController@show');
 /**item index, a specific item, item add, item remove, get the suitcase now(so the items update) */    

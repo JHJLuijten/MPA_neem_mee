@@ -6,7 +6,14 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
-
+                
+                    <form action="{{Action('ItemController@giveName')}}" method="POST">
+                        @csrf
+                        <h2>Name of suitcase: </h2><input name="name" value="{{$name}}">
+                        {{csrf_field()}}
+                        <button type="submit">Save name</button>    
+                    </form>
+                    
                 <div class="card-body">
                     @if ($items != 0 )
                         @foreach ($items as $item)

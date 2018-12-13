@@ -49,7 +49,8 @@ class ItemController extends Controller
 
     public function getSuitcase(){
         $suitcase = new Suitcase();
-        return view('/items/suitcase', ['items' => $suitcase->items, 'weight' => $suitcase->weightInGrams, 'quantity' => $suitcase->quantity, 'maxWeight' => $suitcase->maxWeight]);
+        // dd($suitcase->name);
+        return view('/items/suitcase', ['name' => $suitcase->name, 'items' => $suitcase->items, 'weight' => $suitcase->weightInGrams, 'quantity' => $suitcase->quantity, 'maxWeight' => $suitcase->maxWeight]);
     }
 
     /**
@@ -71,11 +72,21 @@ class ItemController extends Controller
         return redirect('/items/suitcase');
     }
 
-    public function increaseWeight(){
+    public function increaseWeight($id){
         $suitcase = new Suitcase;
         $getSuitcase = $suitcase->getSuitcase();
-        $suitcase->increaseWeight();
+        $suitcase->increaseWeight($id);
         return view('/items/suitcase', ['items' => $getSuitcase->items]);
+    }
+
+    /**
+     * function to give a name to a suitcase
+     */
+    public function giveName(Request $request){
+        $suitcase = new Suitcase;
+        $name = $request->input('name');
+        $suitcase->nameInSession($name);
+        return redirect('/items/suitcase');
     }
 
 }

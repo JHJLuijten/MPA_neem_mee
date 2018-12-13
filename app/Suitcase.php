@@ -104,9 +104,15 @@ class Suitcase{
         }
     }
 
-    public function giveName(){
+    public function giveName($name){
+        $this->name = $name;
+        Session::put('name',$name);
+        
+    }
+    public function nameInSession($name) {
         $usedSuitcase = Session::get('suitcase');
         $suitcase = new suitcase($usedSuitcase);
-        $this->name = $suitcase->name;
+        $suitcase->giveName($name);
+        session(['name' => $name]);
     }
 }

@@ -42,6 +42,7 @@ Route::get('/remove/{id}', [
     'as' => 'suitcase.remove'
 ]);
 Route::get('/show/{id}', 'ItemController@show');
+Route::get('/retrieve', 'ItemController@retrieve');
 Route::get('/item/add/{id}', [
     'uses'=>'ItemController@addItem',
     'as'=>'item.add'

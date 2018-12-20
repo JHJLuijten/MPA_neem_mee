@@ -14,7 +14,7 @@ class ItemController extends Controller
      * index shows all items
      */
 
-    function index(){
+    public function index(){
         $items=item::get();
         return view('/item',['items'=>$items]);
     }
@@ -23,10 +23,25 @@ class ItemController extends Controller
      * shows a speific item
      */
 
-    function show($id){
+    public function show($id){
         $item = item::find($id);
         $test = session::get('suitcase');
         return view('/show',['item'=>$item, 'test' => $test]);
+    }
+
+    /**
+     * retrive items
+     */
+    public function retrieve(){
+        
+        $suitcase = new Suitcase();
+        $items = $suitcase->retrieveItems();
+        foreach($items as $item){
+            $itemRetrieved[] = Item::find($item['id']);
+        };
+        dd($itemRetrieved);
+        return redirect()->back();
+
     }
 
     /**
@@ -34,12 +49,9 @@ class ItemController extends Controller
      */
 
     //sesions op juiste plek zetten
-    public function addItem(Request $request, $id){
-        $item = Item::find($id); 
-        $usedSuitcase = Session::has('suitcase') ? Session::get('suitcase') : null;
-        $suitcase = new Suitcase($usedSuitcase);
-        $suitcase->add($id, $item);
-        $request->session()->put('suitcase' , $suitcase);
+    public function addItem($id){
+        $suitcase = new Suitcase();
+        $suitcase->add($id);
         return redirect()->back();
     }
 
@@ -72,11 +84,11 @@ class ItemController extends Controller
         return redirect('/items/suitcase');
     }
 
-    public function increaseWeight($id){
+    public function increaseWeight(){
         $suitcase = new Suitcase;
-        $getSuitcase = $suitcase->getSuitcase();
-        $suitcase->increaseWeight($id);
-        return view('/items/suitcase', ['items' => $getSuitcase->items]);
+        $getSuitcase = $this->getSuitcase();
+        $suitcase->increaseWeight();
+        return redirect('/items/suitcase', ['items' => $getSuitcase->items]);
     }
 
     /**

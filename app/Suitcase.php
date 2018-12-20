@@ -2,13 +2,14 @@
 
 namespace App;
 use Session;
+use App\Item;
 
 class Suitcase{
-    public $name;
-    public $items;
-    public $weightInGrams;
-    public $quantity;
-    public $maxWeight = 20000;
+    protected $name;
+    protected $items;
+    protected $weightInGrams;
+    protected $quantity;
+    protected $maxWeight = 20000;
 
     /**
      * gets items and puts them in the public var
@@ -16,7 +17,10 @@ class Suitcase{
 
     public function __construct(){
         $usedSuitcase = Session::get('suitcase');
-        
+        $this->items = session()->get('suitcase');
+        if(empty($this->items)){
+            $this->items = [];
+        }
         if ($usedSuitcase) {
             $this->name = $usedSuitcase->name;
             $this->items = $usedSuitcase->items;
@@ -27,20 +31,30 @@ class Suitcase{
 
     /**
      * adds item to suitcase
+     * $item haalt het item met het id dat die mee geeft op
+     * dan checkt die met een if else of er iets in zit met isset
+     * je klikt op een link en die geeft een id mee aan een function in de controller
+     * nieuw var $savedItem daar slaan we het item op
      */
 
-    public function add($id,$item){
-        $itemAdd = ['qty' => 0, 'weight'=> $item->weightInGrams, 'item' => $item];
-        if($this->items){
-            if(array_key_exists($id, $this->items)){
-                $itemAdd = $this->items[$id];
-            }
+    public function add($id){
+        $item = Item::find($id);
+        if (isset($this->items[$id])){
+            $savedItem = $this->items[$id];
+        } else {
+            $savedItem = ['qty' => 0 , 'id' => $id];
         }
-        $itemAdd['qty']++;
-        $itemAdd['weight'] = $item->weightInGrams * $itemAdd['qty'];
-        $this->items[$id] = $itemAdd;
-        $this->quantity++;
-        $this->weightInGrams += $item->weightInGrams;
+        $savedItem['qty']++;
+        $this->items[$id] = $savedItem;
+        session()->put('items' , $this->items);
+        $session = session()->get('items');
+        
+    }
+
+    public function retrieveItems(){
+        
+        $items = $this->items;
+        return $items;
     }
 
     public function minus($id){

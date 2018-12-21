@@ -5,28 +5,28 @@ use Session;
 use App\Item;
 
 class Suitcase{
-    protected $name;
+    public $name;
     protected $items;
-    protected $weightInGrams;
-    protected $quantity;
-    protected $maxWeight = 20000;
+    public $weightInGrams;
+    public $quantity;
+    public $maxWeight = 20000;
 
     /**
      * gets items and puts them in the public var
      */
 
     public function __construct(){
-        $usedSuitcase = Session::get('suitcase');
-        $this->items = session()->get('suitcase');
+        // $usedSuitcase = Session::get('suitcase');
+        $this->items = session()->get('items');
         if(empty($this->items)){
             $this->items = [];
         }
-        if ($usedSuitcase) {
-            $this->name = $usedSuitcase->name;
-            $this->items = $usedSuitcase->items;
-            $this->weightInGrams = $usedSuitcase->weightInGrams;
-            $this->quantity = $usedSuitcase->quantity;
-        }
+        // if ($usedSuitcase) {
+        //     $this->name = $usedSuitcase->name;
+        //     $this->items = $usedSuitcase->items;
+        //     $this->weightInGrams = $usedSuitcase->weightInGrams;
+        //     $this->quantity = $usedSuitcase->quantity;
+        // }
     }
 
     /**
@@ -49,11 +49,22 @@ class Suitcase{
         session()->put('items' , $this->items);
         $session = session()->get('items');
         
+        
     }
 
+
+
     public function retrieveItems(){
-        
-        $items = $this->items;
+        $items[] = session()->get('items');
+        $items[] = $this->retrieveName();
+        return $items;
+    }
+
+    public function retrieveName(){
+        foreach($this->items as $item){
+            $itemData =  Item::find($item['id']);
+            $items[] = $itemData;
+        }
         return $items;
     }
 

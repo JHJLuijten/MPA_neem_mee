@@ -36,19 +36,16 @@ class ItemController extends Controller
         
         $suitcase = new Suitcase();
         $items = $suitcase->retrieveItems();
-        foreach($items as $item){
-            $itemRetrieved[] = Item::find($item['id']);
-        };
-        dd($itemRetrieved);
-        return redirect()->back();
+    //    dd($items);
+        // dd($itemRetrieved);
+        return view('/items/suitcase',['items' => $items]);
 
     }
 
     /**
      * Adds an item to the suitcase
      */
-
-    //sesions op juiste plek zetten
+    
     public function addItem($id){
         $suitcase = new Suitcase();
         $suitcase->add($id);

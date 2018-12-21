@@ -47,4 +47,4 @@ Route::get('/item/add/{id}', [
     'uses'=>'ItemController@addItem',
     'as'=>'item.add'
     ]);
-Route::get('/items/suitcase', 'ItemController@getSuitcase');
+Route::get('/items/suitcase', 'ItemController@retrieve');

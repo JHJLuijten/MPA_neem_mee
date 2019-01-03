@@ -42,6 +42,22 @@ class ItemController extends Controller
 
     }
 
+    public function minusOne($id){
+        $suitcase = new Suitcase();
+        $suitcase->minusOne($id);
+        return redirect()->back();
+    }
+     
+    public function minusAll($id){
+        $suitcase = new Suitcase();
+        $suitcase->minusAll($id);
+        return redirect()->back();
+    }
+
+    public function toDatabase(){
+        $suitcase = new Suitcase();
+        $suitcase->toDatabase();
+    }
     /**
      * Adds an item to the suitcase
      */

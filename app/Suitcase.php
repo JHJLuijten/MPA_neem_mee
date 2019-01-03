@@ -47,16 +47,45 @@ class Suitcase{
         $savedItem['qty']++;
         $this->items[$id] = $savedItem;
         session()->put('items' , $this->items);
-        $session = session()->get('items');
         
         
     }
+    public function minusOne($id){
+        foreach($this->items as $item){
+            if($item['id'] == $id){
+                $item['qty']--; 
+                if($item['qty'] == 0 ){
+                    session()->forget('items.'.$item['id']);
+                    break;
+                    dd("dajdai");
+                }
+                $this->items[$id] = $item;
+                // dd($item['qty']);
+                session()->put('items', $this->items);
+            }
 
+        }
+    }
+
+    public function minusAll($id){
+        foreach($this->items as $item){
+            if($item['id'] == $id){
+                session()->forget('items.'.$item['id']);    
+            }
+        }
+    }
+    public function toDatabase(){
+        echo "gelukt";
+    }
 
 
     public function retrieveItems(){
+        if($this->items == null) {
+            return null;
+        }
         $items[] = session()->get('items');
         $items[] = $this->retrieveName();
+
         return $items;
     }
 
@@ -68,55 +97,7 @@ class Suitcase{
         return $items;
     }
 
-    public function minus($id){
-        $this->items[$id]['qty']--;
-        $this->items[$id]['weight'] -= $this->items[$id]['item']['weightInGrams']; 
-        $this->quantity--;
-        $this->weightInGrams -= $this->items[$id]['weight'];    
-        if($this->items[$id]['qty'] <= 0 ){
-            unset($this->items[$id]);
-        }
-    }
- 
-    public function minusItem($id){
-        $usedSuitcase = Session::get('suitcase');
-        $suitcase = new suitcase($usedSuitcase);
-        $suitcase->minus($id);
-        if(count($suitcase->items) > 0){
-            Session::put('suitcase',$suitcase);
-        }else{
-            Session::forget('suitcase');
-        }
-        
-    }
-
-    /**
-     * removes item
-     */
-    public function removeItem($id){
-
-
-        $this->quantity -= $this->items[$id]['qty'];
-        $this->weightInGrams -= $this->items[$id]['weight'];
-        unset($this->items[$id]);
-    }
-
-    /**
-     * removes item from sesion
-     */
-    
-    public function removeItemFromSession($id){
-        $usedSuitcase = Session::get('suitcase');
-        $suitcase = new suitcase($usedSuitcase);
-        $suitcase->removeItem($id);
-        if(count($suitcase->items) > 0){
-            Session::put('suitcase',$suitcase);
-            
-        }else{
-            Session::forget('suitcase');
-        }
-    }
-
+  
     public function increaseWeight(){
         if($this->maxWeight <= 20000 ){
             $this->maxWeight + 5000 ;
@@ -133,11 +114,5 @@ class Suitcase{
         $this->name = $name;
         Session::put('name',$name);
         
-    }
-    public function nameInSession($name) {
-        $usedSuitcase = Session::get('suitcase');
-        $suitcase = new suitcase($usedSuitcase);
-        $suitcase->giveName($name);
-        session(['name' => $name]);
     }
 }

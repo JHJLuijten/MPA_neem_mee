@@ -15,21 +15,23 @@
                     </form>
                      --}}
                 <div class="card-body">
+                    <div style="backgroung-color:white;">
                     @if ($items != 0 )
                         @foreach ($items[1] as $item)
                             {{-- {{dd($item)}} --}}
-                            <h2>Naam: {{$item['name']}}</h2><br>
+                            <strong>Naam: {{$item['name']}}</strong>
                            
                                 @php
                                     $weight = $item['weightInGrams'] * $item['qty'];
                                 @endphp
-                            <h2>Gewicht in gram: {{$weight}}</h2><br>
+                            {{-- <h2>Gewicht in gram: {{$weight}}</h2><br> --}}
                             @foreach ($items[0] as $item)
-                                <h2>Aantal: {{$item['qty']}}</h2><br>
-                            @endforeach      
-  {{--                      <a href="{{route('suitcase.minusItem', ['id' =>$item['item']['id']])}}">minus 1</a><br>
-                            <a href="{{route('suitcase.remove', ['id' =>$item['item']['id']])}}">remove</a> --}}
-                            
+                                <strong>Aantal: {{$item['qty']}}</strong><br>
+                            @endforeach    
+                            <ul>  
+                               <li><a href="{{route('suitcase.minusItem', ['id' =>$item['id']])}}">minus 1</a></li>
+                                <li><a href="{{route('suitcase.remove', ['id' =>$item   ['id']])}}">remove</a></li>
+                            </ul>
                             {{-- {{dd($item)}} --}}
                         @endforeach
 
@@ -49,7 +51,7 @@
                         <h2 style="color:red">to heavy for your suitcase/backpack</h2>
                     @endif --}}
                     
-                    
+                    </div>
                 </div>
             </div>
         </div>

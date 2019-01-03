@@ -18,6 +18,8 @@
                   
                     
                     <h3><a href="/show/{{$item->id}}">{{$item->name}}</a></h3>
+                    <a href="{{route('item.add',['id'=> $item['id']]) }}">Add to suitcase</a>
+                   
                     <br>
                     @endforeach
                     

@@ -16,41 +16,46 @@
                      --}}
                 <div class="card-body">
                     <div style="backgroung-color:white;">
-                    @if ($items != 0 )
-                        @foreach ($items[1] as $item)
-                            {{-- {{dd($item)}} --}}
-                            <strong>Naam: {{$item['name']}}</strong>
-                           
-                                @php
-                                    $weight = $item['weightInGrams'] * $item['qty'];
-                                @endphp
-                            {{-- <h2>Gewicht in gram: {{$weight}}</h2><br> --}}
+                        @if ($items != 0 )
                             @foreach ($items[0] as $item)
-                                <strong>Aantal: {{$item['qty']}}</strong><br>
-                            @endforeach    
-                            <ul>  
-                               <li><a href="{{route('suitcase.minusItem', ['id' =>$item['id']])}}">minus 1</a></li>
-                                <li><a href="{{route('suitcase.remove', ['id' =>$item   ['id']])}}">remove</a></li>
-                            </ul>
-                            {{-- {{dd($item)}} --}}
-                        @endforeach
+                                <strong>Naam: {{$item['name']}}</strong><br>
+                                @foreach ($items[1] as $qty)
+                                    @if($item['id'] == $qty['id'])
+                                        @php
+                                            $weight = $item['weightInGrams'] * $qty['qty'];
+                                        @endphp
+                                        <span>Gewicht in gram: {{$weight}}</span><br>
+                                        <span>Aantal: {{$qty['qty']}}</span><br>
+                                    @endif
+                                @endforeach
+                                <ul>  
+                                    <li><a href="{{route('suitcase.minusItem', ['id' =>$item['id']])}}">minus 1</a></li>
+                                    <li><a href="{{route('suitcase.remove', ['id' =>$item   ['id']])}}">remove</a></li>
+                                    <li><a href="{{route('item.add',['id'=> $item['id']]) }}">Add 1</a></li>
+                                </ul>
+                            @endforeach  
+                            <strong>Totale aantal: {{$details[0]}}</strong>
+                            <strong></strong>
 
+                            @if ($details[1] >= 0 && $details[1] <= $details[2])
+                            {{-- {{dd($details[2])}} --}}
+                            <h2 style="color:green">Totale gewicht: {{$details[1]}} van {{$details[2]}}</h2>
+                            <h3 style="color:green">De koffer is nog niet te zwaar</h3>
+
+                        @else 
+                            <h2 style="color:red">Totale gewicht: {{$details[1]}} is zwaarder dan {{$details[2]}}</h2>
+                            <h3 style="color:red">Koffer is te zwaar (verwijder wat om het lichter te maken)</h3>
+                        @endif
                         
-                    @else ()
-                        <h2>weight = 0</h2>
-                    @endif
-                    
+                        @else
+                            <h2>weight = 0</h2>
+                        @endif
+                        
                     <br><br>
-                    <a href="{{route('suitcase.increaseWeight')}}">Bigger backpack</a><br>
-
-                    {{-- <h2>{{$weight}}</h2> --}}
-                    
-                    {{-- @if ($weight >= 0 && $weight < $maxWeight)
-                        <h2 style="color:green">between 0 an 20000 weight in grams</h2>
-                    @else 
-                        <h2 style="color:red">to heavy for your suitcase/backpack</h2>
-                    @endif --}}
-                    
+                    <a href="{{route('suitcase.increaseWeight')}}">Grotere koffer</a><br>    
+                    <a href="{{route('suitcase.decreaseWeight')}}">Kleinere koffer</a><br>           
+                                {{-- 15 20 25 --}}
+                  
                     </div>
                 </div>
             </div>

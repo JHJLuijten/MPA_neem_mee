@@ -36,9 +36,13 @@ class ItemController extends Controller
         
         $suitcase = new Suitcase();
         $items = $suitcase->retrieveItems();
+        $details = $suitcase->getDetails();
+        // dd($items);
+        // dd($details);
+
     //    dd($items);
         // dd($itemRetrieved);
-        return view('/items/suitcase',['items' => $items]);
+        return view('/items/suitcase',['items' => $items, 'details' => $details]);
 
     }
 
@@ -72,11 +76,11 @@ class ItemController extends Controller
      * Gets items that are in the suitcase
      */
 
-    public function getSuitcase(){
-        $suitcase = new Suitcase();
-        // dd($suitcase->name);
-        return view('/items/suitcase', ['name' => $suitcase->name, 'items' => $suitcase->items, 'weight' => $suitcase->weightInGrams, 'quantity' => $suitcase->quantity, 'maxWeight' => $suitcase->maxWeight]);
-    }
+    // public function getSuitcase(){
+    //     $suitcase = new Suitcase();
+    //     // dd($suitcase->name);
+    //     return view('/items/suitcase', ['name' => $suitcase->name, 'items' => $suitcase->items, 'weight' => $suitcase->weightInGrams, 'quantity' => $suitcase->quantity, 'maxWeight' => $suitcase->maxWeight]);
+    // }
 
     /**
      * Removes item 
@@ -99,9 +103,13 @@ class ItemController extends Controller
 
     public function increaseWeight(){
         $suitcase = new Suitcase;
-        $getSuitcase = $this->getSuitcase();
         $suitcase->increaseWeight();
-        return redirect('/items/suitcase', ['items' => $getSuitcase->items]);
+        return redirect('/items/suitcase');
+    }
+    public function decreaseWeight(){
+        $suitcase = new Suitcase;
+        $suitcase->decreaseWeight();
+        return redirect('/items/suitcase');
     }
 
     /**

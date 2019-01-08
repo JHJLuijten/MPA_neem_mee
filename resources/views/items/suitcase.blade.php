@@ -47,13 +47,18 @@
                             <h3 style="color:red">Koffer is te zwaar (verwijder wat om het lichter te maken)</h3>
                         @endif
                         
-                        @else
-                            <h2>weight = 0</h2>
-                        @endif
+                        
                         
                     <br><br>
+
                     <a href="{{route('suitcase.increaseWeight')}}">Grotere koffer</a><br>    
-                    <a href="{{route('suitcase.decreaseWeight')}}">Kleinere koffer</a><br>           
+                    <a href="{{route('suitcase.decreaseWeight')}}">Kleinere koffer</a><br>     
+                    @if(Auth::check())
+                    <a href="{{route('suitcase.toDatabase')}}">Opslaan</a><br> 
+                    @endif          
+                    @else
+                    <h2>weight = 0</h2>
+                @endif
                                 {{-- 15 20 25 --}}
                   
                     </div>

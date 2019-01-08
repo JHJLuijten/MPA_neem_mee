@@ -61,6 +61,7 @@ class ItemController extends Controller
     public function toDatabase(){
         $suitcase = new Suitcase();
         $suitcase->toDatabase();
+        return redirect()->back();
     }
     /**
      * Adds an item to the suitcase

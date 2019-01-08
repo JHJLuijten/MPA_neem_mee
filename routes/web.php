@@ -45,6 +45,10 @@ Route::get('/increaseWeight',[
     'uses' => 'ItemController@increaseWeight',
     'as' => 'suitcase.increaseWeight'
 ]);
+Route::get('/toDatabase',[
+    'uses' => 'ItemController@toDatabase',
+    'as' => 'suitcase.toDatabase'
+]);
 Route::get('/decreaseWeight',[
     'uses' => 'ItemController@decreaseWeight',
     'as' => 'suitcase.decreaseWeight'

@@ -2,10 +2,12 @@
 
 namespace App;
 use Session;
+use Auth;
 use App\Item;
-
+use App\SuitcaseDb;
+use App\SuitcaseDetail;
 class Suitcase{
-    public $name;
+    public $name = 'Koffer';
     protected $items;
     protected $maxWeight = 20000;
 
@@ -52,7 +54,8 @@ class Suitcase{
         $savedItem['qty']++;
         $this->items[$id] = $savedItem;
         session()->put('items' , $this->items);
-        
+        $session =  session()->get('items');
+        // dd($session);
         
     }
     public function minusOne($id){
@@ -79,8 +82,19 @@ class Suitcase{
             }
         }
     }
-    public function toDatabase(){
-        echo "gelukt";
+    public function toDatabase() {
+        $suitcase = SuitcaseDb::create([
+          'user_id' => Auth::user()->id,
+          'name' => $this->name,
+        ]);
+        foreach ($this->items as $item) {
+          SuitcaseDetail::create([
+            'suitcase_id' => $suitcase->id,
+            'item_id' => $item['id'],
+            'quantity' =>$item['qty'],
+          ]);
+        }
+        Session()->forget('secondCart');
     }
 
 
@@ -99,8 +113,10 @@ class Suitcase{
             return null;
         } 
         foreach($this->items as $item) {
+            // dd($item);  
             $itemDb = item::find($item['id']);
             $quantity[] = $item['qty'];
+            // dd($itemDb);
             $weight[] = $item['qty'] * $itemDb->weightInGrams;
         }   
         $maxWeight = session()->get('maxWeight');

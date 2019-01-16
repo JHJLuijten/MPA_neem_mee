@@ -13,16 +13,19 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @foreach ($items as $item)
+                    @if($items)
+                        @foreach ($items as $item)
+                        
                     
-                  
+                        
+                        <h3><a href="/show/{{$item->id}}">{{$item->name}}</a></h3>
+                        <a href="{{route('item.add',['id'=> $item['id']]) }}">Add to suitcase</a>
                     
-                    <h3><a href="/show/{{$item->id}}">{{$item->name}}</a></h3>
-                    <a href="{{route('item.add',['id'=> $item['id']]) }}">Add to suitcase</a>
-                   
-                    <br>
-                    @endforeach
-                    
+                        <br>
+                        @endforeach
+                    @else
+                        <h2>Geen items beschikbaar</h2>
+                    @endif    
                 </div>
             </div>
         </div>

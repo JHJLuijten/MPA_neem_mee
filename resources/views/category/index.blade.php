@@ -14,12 +14,10 @@
                         </div>
                     @endif
                     
-
-                    @foreach ($categories as $category)
-                    <a href="/category/index/{{$category->id}}">{{$category->name}}</a>
-                       
-                    @endforeach
-                    
+                        @foreach ($categories as $category)
+                        <a href="/category/index/{{$category->id}}">{{$category->name}}</a>
+                        
+                        @endforeach
                 </div>
             </div>
         </div>

@@ -54,7 +54,9 @@
                     <a href="{{route('suitcase.increaseWeight')}}">Grotere koffer</a><br>    
                     <a href="{{route('suitcase.decreaseWeight')}}">Kleinere koffer</a><br>     
                     @if(Auth::check())
-                    <a href="{{route('suitcase.toDatabase')}}">Opslaan</a><br> 
+                        @if($details[1] < $details[2])        
+                            <a href="{{route('suitcase.toDatabase')}}">Opslaan</a><br> 
+                        @endif
                     @endif          
                     @else
                     <h2>weight = 0</h2>

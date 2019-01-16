@@ -94,7 +94,7 @@ class Suitcase{
             'quantity' =>$item['qty'],
           ]);
         }
-        Session()->forget('secondCart');
+        Session()->forget('items');
     }
 
 

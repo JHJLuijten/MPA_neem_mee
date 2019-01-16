@@ -37,12 +37,14 @@ class ItemController extends Controller
         $suitcase = new Suitcase();
         $items = $suitcase->retrieveItems();
         $details = $suitcase->getDetails();
+        $name = $suitcase->getName();
+        // dd($name);
         // dd($items);
         // dd($details);
 
     //    dd($items);
         // dd($itemRetrieved);
-        return view('/items/suitcase',['items' => $items, 'details' => $details]);
+        return view('/items/suitcase',['items' => $items, 'details' => $details, 'name' => $name]);
 
     }
 
@@ -119,7 +121,7 @@ class ItemController extends Controller
     public function giveName(Request $request){
         $suitcase = new Suitcase;
         $name = $request->input('name');
-        $suitcase->nameInSession($name);
+        $suitcase->giveName($name);
         return redirect('/items/suitcase');
     }
 

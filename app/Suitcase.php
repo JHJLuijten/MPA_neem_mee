@@ -16,24 +16,23 @@ class Suitcase{
      */
 
     public function __construct(){
-        $maxWeight = session()->get('maxWeight');
-        if($maxWeight == 20000) {
-        Session::put('maxWeight',$this->maxWeight);
-        } else {
-            $this->maxWeight = $maxWeight;
-        }
-        // dd($maxWeight);
+        $maxWght = session()->get('maxWeight');
+        if($maxWght) {
+            $this->maxWeight = $maxWght;
+        } 
+        // else {
+        // Session::put('maxWeight',$this->maxWeight);
+        // }
+        // // dd($maxWeight);
         // $usedSuitcase = Session::get('suitcase');
         $this->items = session()->get('items');
         if(empty($this->items)){
             $this->items = [];
         }
-        // if ($usedSuitcase) {
-        //     $this->name = $usedSuitcase->name;
-        //     $this->items = $usedSuitcase->items;
-        //     $this->weightInGrams = $usedSuitcase->weightInGrams;
-        //     $this->quantity = $usedSuitcase->quantity;
-        // }
+        $name = session()->get('name');
+        if ($name) {
+           $this->name = $name;
+        }
     }
 
     /**
@@ -95,6 +94,8 @@ class Suitcase{
           ]);
         }
         Session()->forget('items');
+        Session()->forget('name');
+
     }
 
 
@@ -119,15 +120,14 @@ class Suitcase{
             // dd($itemDb);
             $weight[] = $item['qty'] * $itemDb->weightInGrams;
         }   
-        $maxWeight = session()->get('maxWeight');
-        if($maxWeight)  {
-            $maxWeight = session()->get('maxWeight');
-        } else {
-            $maxWeight = $this->maxWeight;
-        }       
+        $maxWeight = $this->maxWeight;
+        // dd($maxWeight);      
             $totalQty = array_sum($quantity);
             $totalWeight = array_sum($weight);
             return array($totalQty,$totalWeight, $maxWeight);
+    }
+    public function getName() {
+        return $this->name;
     }
 
     public function retrieveName(){
@@ -141,7 +141,8 @@ class Suitcase{
   
     public function increaseWeight(){
         if($this->maxWeight <= 20000 ){
-            $this->maxWeight += 5000 ;
+            $this->maxWeight += 5000;
+            // dd($this->maxWeight);
             session()->put('maxWeight',$this->maxWeight);
         }  
     }

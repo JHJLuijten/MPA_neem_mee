@@ -7,13 +7,13 @@
             <div class="card">
                 <div class="card-header">Dashboard</div>
                 
-                    {{-- <form action="{{Action('ItemController@giveName')}}" method="POST">
+                    <form action="{{Action('ItemController@giveName')}}" method="POST">
                         @csrf
                         <h2>Name of suitcase: </h2><input name="name" value="{{$name}}">
                         {{csrf_field()}}
                         <button type="submit">Save name</button>    
                     </form>
-                     --}}
+                    
                 <div class="card-body">
                     <div style="backgroung-color:white;">
                         @if ($items != 0 )

@@ -21,18 +21,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 // });
 
 Auth::routes();
-
-
-Route::get('/minusOne', 'ItemController@minusOne');
-Route::get('/minusAll/{id}', 'ItemController@minusAll');
-Route::get('/toDatabase', 'ItemController@toDatabase');
-
-
-Route::post('/giveName', 'ItemController@giveName');
-Route::get('/categories', 'CategoryController@categories');
-Route::get('/item/{id}', 'CategoryController@show');
-/**item index, a specific item, item add, item remove, get the suitcase now(so the items update) */    
+//itemcontroller
 Route::get('/item', 'ItemController@index');
+Route::get('/show/{id}', 'ItemController@show');
+
+//suitcase
+Route::get('/toDatabase', 'ItemController@toDatabase');
+Route::post('/giveName', 'ItemController@giveName');
 Route::get('/minusOne/{id}', [
     'uses' => 'ItemController@minusOne',
     'as' => 'suitcase.minusItem'
@@ -53,8 +48,14 @@ Route::get('/decreaseWeight',[
     'uses' => 'ItemController@decreaseWeight',
     'as' => 'suitcase.decreaseWeight'
 ]);
-Route::get('/show/{id}', 'ItemController@show');
-Route::get('/retrieve', 'ItemController@retrieve');
+
+//Categories
+Route::get('/categories', 'CategoryController@categories');
+Route::get('/item/{id}', 'CategoryController@show');
+
+/**item index, a specific item, item add, item remove, get the suitcase now(so the items update) */    
+
+// Route::get('/retrieve', 'ItemController@retrieve');
 Route::get('/item/add/{id}', [
     'uses'=>'ItemController@addItem',
     'as'=>'item.add'

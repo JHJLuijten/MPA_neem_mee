@@ -19,7 +19,7 @@
                      
                         
                         <br><a href="/categories">Categories</a>
-                        <br><a href="/item">Index items</a>
+                        <br><a href="/index">Index items</a>
                     
                 </div>
             </div>

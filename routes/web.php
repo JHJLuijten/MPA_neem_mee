@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 //itemcontroller
-Route::get('/item', 'ItemController@index');
+Route::get('/index', 'ItemController@index');
 Route::get('/show/{id}', 'ItemController@show');
 
 //suitcase
@@ -51,7 +51,7 @@ Route::get('/decreaseWeight',[
 
 //Categories
 Route::get('/categories', 'CategoryController@categories');
-Route::get('/item/{id}', 'CategoryController@show');
+Route::get('/category/index/{id}', 'CategoryController@show');
 
 /**item index, a specific item, item add, item remove, get the suitcase now(so the items update) */    
 

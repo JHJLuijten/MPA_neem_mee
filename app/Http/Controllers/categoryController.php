@@ -12,9 +12,9 @@ class CategoryController extends Controller
      * shows all categories
      */
     function categories(){
-        $categories=category::all();
+        $categories=Category::all();
         
-        return view('/categories',['categories'=>$categories]);
+        return view('/category/index',['categories'=>$categories]);
     }
 
     /**
@@ -23,10 +23,10 @@ class CategoryController extends Controller
      * return view('/show',['item'=>$item]); en hier leid die hem naar de show 
      */
     function show($id){
-        $item=Category::find($id);
-        $test = $item->items()->get();
+        $category =Category::find($id);   
+        $items = $category->items()->get();
         
-        return view('/show',['item'=>$item]);
+        return view('/category/show',['items'=>$items]);
     }
     
 }

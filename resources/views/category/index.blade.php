@@ -16,7 +16,7 @@
                     
 
                     @foreach ($categories as $category)
-                    <a href="/item/{{$category->id}}">{{$category->name}}</a>
+                    <a href="/category/index/{{$category->id}}">{{$category->name}}</a>
                        
                     @endforeach
                     

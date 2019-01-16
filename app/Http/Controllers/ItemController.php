@@ -16,7 +16,7 @@ class ItemController extends Controller
 
     public function index(){
         $items=item::get();
-        return view('/item',['items'=>$items]);
+        return view('/items/index',['items'=>$items]);
     }
 
     /**
@@ -26,7 +26,7 @@ class ItemController extends Controller
     public function show($id){
         $item = item::find($id);
         $test = session::get('suitcase');
-        return view('/show',['item'=>$item, 'test' => $test]);
+        return view('/items/show',['item'=>$item, 'test' => $test]);
     }
 
     /**

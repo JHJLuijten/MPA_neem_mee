@@ -36,7 +36,7 @@
 
                     </ul>
                     <a style="margin:2px;" href="/categories">categories </a>
-                    <a style="margin:2px;" href="/item">index </a>
+                    <a style="margin:2px;" href="/index ">index </a>
                     <a style="margin:2px;" href="/items/suitcase">suitcase</a>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

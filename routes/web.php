@@ -26,7 +26,11 @@ Route::get('/index', 'ItemController@index');
 Route::get('/show/{id}', 'ItemController@show');
 
 //suitcase
+Route::group(['middleware' => 'auth'], function(){
 Route::get('/toDatabase', 'ItemController@toDatabase');
+Route::get('/user/profile', 'UserController@getProfile');
+});
+
 Route::post('/giveName', 'ItemController@giveName');
 Route::get('/minusOne/{id}', [
     'uses' => 'ItemController@minusOne',
@@ -52,6 +56,9 @@ Route::get('/decreaseWeight',[
 //Categories
 Route::get('/categories', 'CategoryController@categories');
 Route::get('/category/index/{id}', 'CategoryController@show');
+
+//profile user
+
 
 /**item index, a specific item, item add, item remove, get the suitcase now(so the items update) */    
 

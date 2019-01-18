@@ -38,6 +38,7 @@
                     <a style="margin:2px;" href="/categories">categories </a>
                     <a style="margin:2px;" href="/index ">index </a>
                     <a style="margin:2px;" href="/items/suitcase">suitcase</a>
+                    
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -62,6 +63,8 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    <a class="dropdown-item" href="/user/profile">Koffer details</a>
+
                                     
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

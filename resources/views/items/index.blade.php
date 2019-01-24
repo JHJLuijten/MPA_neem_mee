@@ -15,12 +15,8 @@
                     @endif
                     @if($items)
                         @foreach ($items as $item)
-                        
-                    
-                        
                         <h3><a href="/show/{{$item->id}}">{{$item->name}}</a></h3>
                         <a href="{{route('item.add',['id'=> $item['id']]) }}">Voeg aan koffer toe</a>
-                    
                         <br>
                         @endforeach
                     @else

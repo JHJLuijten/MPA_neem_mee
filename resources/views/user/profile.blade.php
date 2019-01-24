@@ -7,14 +7,16 @@
             <div class="card">
                 <div class="card-header">Opgeslagen koffers:</div>
                 @if($suitcaseDetails)
-                @foreach ($suitcaseDetails as $item)
-                    <strong>Naam: {{$item->suitcase->name}}</strong>
-                    <strong>Koffer id: {{$item->suitcase->id}}</strong>
-                    <strong>Naam: {{$item->Item->name}}</strong>
-                    <strong>aantal: {{$item->quantity}}</strong>
-                    <strong>totale gewicht: {{$item->item->weightInGrams * $item->quantity}}</strong>
-                    <br>
-                @endforeach
+                <div style="margin-left:10%;">
+                    @foreach ($suitcaseDetails as $item)
+                        <strong>Naam: {{$item->suitcase->name}}</strong><br>
+                        <strong>Koffer id: {{$item->suitcase->id}}</strong><br>
+                        <strong>Naam: {{$item->Item->name}}</strong><br>
+                        <strong>aantal: {{$item->quantity}}</strong><br>
+                        <strong>totale gewicht: {{$item->item->weightInGrams * $item->quantity}}</strong>
+                        <br>
+                    @endforeach
+                </div>
                 @else
                     <strong>Er zijn nog geen koffers opgeslagen</strong>
                 @endif                  
